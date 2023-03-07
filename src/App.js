@@ -40,7 +40,48 @@ function App() {
 
   }
 
-  const handleUpdateToDo = (title, creationDate) => {} 
+  const handleUpdateToDo = (title, creationDate) => {
+
+    //let's copy the array because we are going to modify it. 
+      let toDoListCopy = [...toDoList]
+      //let's use map to modify each element
+      toDoListCopy = toDoListCopy.map((toDo) => {
+          //mapping over each element
+
+          //when we find a matching , modify it , otherwise
+          // leave it alone
+          if (toDo.title === title && toDo.creationDate === creationDate){
+
+                //create new updated to do list entry 
+                //copy over fields
+                const updatedToDo = { 
+                  ...toDo, 
+                }; 
+                //handle toggle of complete status
+                updatedToDo.isComplete = !updatedToDo.isComplete;
+
+                //handle toggle of completed date
+                if(updatedToDo.completedDate === null) {
+                  //update completedDate field   
+                  updatedToDo.completedDate = new Date().toString();
+                  //update the state 
+                  setToDoList(toDoListCopy)      
+              } else {
+                updatedToDo.completedDate = null;
+              }
+
+              //return updated to do object 
+              return updatedToDo 
+          } else {
+            return toDo;
+          } 
+
+     }) 
+
+    //update state with the new modified list 
+    setToDoList(toDoListCopy);
+
+  } 
 
 
 
