@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.To-do-item {
+	margin: 20px;
+	padding: 10px;
+}
+
+.To-do-item.High {
+	border: 1px solid red;
+}
+.To-do-item.Medium {
+	border: 1px solid yellow;
+}
+.To-do-item.Low {
+	border: 1px solid green;
+}
+
+.To-do-item-strikethrough {
+  text-decoration: line-through;
+}
